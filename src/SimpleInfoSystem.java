@@ -1,7 +1,15 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class SimpleInfoSystem {
     public static void main(String[] args) {
+        /** Reading chance of noise from console **/
+        double p = 0;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Enter chance of noise to appear [0, 1]:");
+        p = scan.nextDouble();
+
         String inFileName  = "input.txt";
         String outFileName = "output.txt";
 
@@ -24,7 +32,7 @@ public class SimpleInfoSystem {
         coder.receive(source.send());
 
         /** Coding and transmitting data, doing analysis **/
-        TransmittingCanal canal = new TransmittingCanal();
+        TransmittingCanal canal = new TransmittingCanal(p);
         canal.receive(coder.code(), coder.getCodesTree(), coder.codedLenCount());
         coder.analysis();
 
