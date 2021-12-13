@@ -13,6 +13,7 @@ public class SimpleInfoSystem {
         String inFileName  = "input.txt";
         String haffmanFile = "haffman.txt";
         String douHaffmanFile = "doubleHaffman.txt";
+        String uniformFile = "uniformCode.txt";
 
         String data = "";
 
@@ -58,6 +59,13 @@ public class SimpleInfoSystem {
 
         try (FileOutputStream fout = new FileOutputStream(douHaffmanFile)) {
             byte[] buffer = result.douHaffman.getBytes();
+            fout.write(buffer);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try (FileOutputStream fout = new FileOutputStream(uniformFile)) {
+            byte[] buffer = result.uniform.getBytes();
             fout.write(buffer);
         } catch (IOException e) {
             System.out.println(e.getMessage());

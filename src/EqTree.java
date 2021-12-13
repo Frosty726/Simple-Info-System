@@ -1,16 +1,23 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class HafTree {
-    private Node root;
+public class EqTree {
+    private EqTree.Node root;
 
-    public HafTree(ArrayList<PrePair> arr) {
-        ArrayList<Node> nodes = new ArrayList<>();
+    public EqTree(ArrayList<PrePair> arr) {
+        ArrayList<EqTree.Node> nodes = new ArrayList<>();
         for (PrePair pair : arr)
-            nodes.add(new Node(((Pair)pair).ch, null, null));
+            nodes.add(new EqTree.Node(((Pair)pair).ch, null, null));
+
+        int remaining = 1;
+        while (remaining < arr.size())
+            remaining <<= 1;
+        for (int i = 0; i < remaining - arr.size(); ++i)
+            nodes.add(new EqTree.Node('$', null, null));
 
         while (nodes.size() != 1)
             for (int i = 0; i < nodes.size() - 1; ++i) {
-                nodes.set(i, new Node('\0', nodes.get(i), nodes.get(i + 1)));
+                nodes.set(i, new EqTree.Node('\0', nodes.get(i), nodes.get(i + 1)));
                 nodes.remove(i + 1);
             }
 
@@ -19,10 +26,10 @@ public class HafTree {
 
     public class Node {
         public char character;
-        public Node left;
-        public Node right;
+        public EqTree.Node left;
+        public EqTree.Node right;
 
-        public Node(char ch, Node left, Node right) {
+        public Node(char ch, EqTree.Node left, EqTree.Node right) {
             this.character  = ch;
             this.left       = left;
             this.right      = right;
@@ -36,7 +43,7 @@ public class HafTree {
         return result;
     }
 
-    private void goDeep(HashMap<Character, ArrayList<Character>> map, ArrayList<Character> code, Node node) {
+    private void goDeep(HashMap<Character, ArrayList<Character>> map, ArrayList<Character> code, EqTree.Node node) {
         if (node.character != '\0') {
             map.put(node.character, code);
             return;
@@ -50,20 +57,7 @@ public class HafTree {
         goDeep(map, code, node.right);
     }
 
-    public Node getRoot() {
+    public EqTree.Node getRoot() {
         return root;
-    }
-}
-
-abstract class PrePair {
-    public int num;
-}
-
-class Pair extends PrePair{
-    public char ch;
-
-    Pair(char ch, int num) {
-        this.ch  = ch;
-        this.num = num;
     }
 }

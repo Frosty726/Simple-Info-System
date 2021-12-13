@@ -65,6 +65,32 @@ public class Decoder {
                 ++index;
             }
         }
+
+        /** Decoding uniform code **/
+        EqTree.Node eqNode = data.uniTree.getRoot();
+        index = 0;
+        timer = 16;
+
+        while (data.uniCount >= 0) {
+            if (eqNode.character != '\0') {
+                output.uniform += eqNode.character;
+                eqNode = data.uniTree.getRoot();
+            }
+            if ((data.uniformCode[index] & (char)32768) != 0)
+                eqNode = eqNode.left;
+            else
+                eqNode = eqNode.right;
+
+            data.uniformCode[index] <<= 1;
+
+            --timer;
+            --data.uniCount;
+
+            if (timer == 0) {
+                timer = 16;
+                ++index;
+            }
+        }
     }
 
     public OutText send() {
@@ -75,9 +101,11 @@ public class Decoder {
 class OutText {
     String haffman;
     String douHaffman;
+    String uniform;
 
     public OutText() {
         haffman     = "";
         douHaffman  = "";
+        uniform     = "";
     }
 }
