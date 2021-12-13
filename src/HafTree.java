@@ -4,10 +4,10 @@ import java.util.HashMap;
 public class HafTree {
     private Node root;
 
-    public HafTree(ArrayList<Pair> arr) {
-        ArrayList<Node> nodes = new ArrayList<Node>();
-        for (Pair pair : arr)
-            nodes.add(new Node(pair.ch, null, null));
+    public HafTree(ArrayList<PrePair> arr) {
+        ArrayList<Node> nodes = new ArrayList<>();
+        for (PrePair pair : arr)
+            nodes.add(new Node(((Pair)pair).ch, null, null));
 
         while (nodes.size() != 1)
             for (int i = 0; i < nodes.size() - 1; ++i) {
@@ -32,7 +32,7 @@ public class HafTree {
 
     public HashMap<Character, ArrayList<Character>> getCodesMap() {
         HashMap<Character, ArrayList<Character>> result = new HashMap<>();
-        goDeep(result, new ArrayList<Character>(), root);
+        goDeep(result, new ArrayList<>(), root);
 
         return result;
     }

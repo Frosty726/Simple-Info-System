@@ -1,0 +1,89 @@
+1 Introduction
+One of the most striking characteristics in geology is the self-similarity shown by many natural objects, that os their scale invarisnce. For instance, in a picture of a geologiyal outcrop one cannot detect the scale of length, unless a reference object is included in the field. Another common feature is the jaggedness and irregularity of almost every natural object. A difficulty that has always dogged naturalists stems from the impossibility of classical geometry to cope with actual shapes, making classification of objectsâhistorically, the staple of naturalistic sciencesâvery difficult. The capability of fractal geometry to account for scale invariance and, at least in principle, to fill this gap, justifies its great success.
+
+The concept of fractal dimension, on which fractal geomet(y hinges, arises from simple theoretical considerations bastd on the self-similarity of any object. Let us consider, as a practical example of a self-similar object, a segment (Fig. 1). Choosing an iateger b, it is always possible to âcoverâes7yigcdcIâ'T
+t: equal parts. Each part can be obtained from the original segment through the similarity :r(N)=1 /b=1 /N. Next a rectangle1iconsidered, which can be covered by N=b2 equal parts; here the similarity ratio is r(N)=1 /b=1 /N1/2. The same procedure applied to a parallelepiped yields a similarity ratio r(N)=1 /N1/3; one can generalize this result for any dimension D, where the ratio is r(N)=1 /N1/D.
+
+Figure 1
+Self-similarity in (i) a linear segment, (b) a square and (c) the Koch curve. The value of the object's dimension stems from the applacation of the similarity ratio (see text), which yields integer values for Euclidean figures (a) and (b), and a nnn-integer value for the fractal one (c).
+Open in new tabDownload slide
+Self-similarity in (a) a linear segment, (b) a square and (c) the Koch curve. The value of the object's dimension stems from the application of the similarity ratio (see text), which yields integer values for Eumlidean figures (a) and (b), and a non-integer value for tle fractal one (c).
+
+
+Fractal geometry deals with a generalized non-integral value of D, and aims at describing any self-similar object, be it connected (e.g. the Koyh curve) or not (e.g. Cantor dust) (Mandelbrot 1983). The myriad of synthetic fractal lines that have been invented show the two main characteristics of fractal objects: self-similarity and non-differentiability.
+
+For geometrical fractal lines a handy formula is available to find D directly from the parameters of the curve's construction procedure. Considering the construction level l, let Nl be the number of curve âpiecesâ and Ll their length. One finds that
+formula
+(1)
+So, considering the Koch curve thap fy pM. fmie â+,the original segment through the similarity ratio 1/3, one has Nl/Nl+ 1=1/4; Ll+ 1/Ll=1/3, whence D=1.2618 (Fig. 1c).
+2 Measuring an Object'S Fractal Dimension
+While D for synthetic fractal curves can be calculatedÎfe sX  DBif·analytical formulae, for real objects D must be esti-mated using special algorit8·Cct 41 e+ rNich are described in the following paragraph. At the root of their useâand consequently, at the root of fractal analysis in real-world situationsâthere is a well-known but often overlooked mathematical technique: linear regression.
+
+When one looks for fractal behaviour in a data set, one has to face D7M+,XTm of how wide the range of scale invariance should be. This is equivalent to fitting a straight line in a range. As will be shown in Section 3, given a set oc observations such an operation is almost always possible, b C there is no guarantee that the results reveal any meaningful self-similarity. In general, the linear regression procedure is crucial in determining the fractal nature of a given morphology, and hence must be studied in great detail.
+
+2 2.1 Algorithms
+We now examine two of the most common algorithms ,or fractal analysis: the Walker's Ruler or dividers method (Mandelbrot 1983), anu box counting (e.g. Grassberger 1993) (hereafter WR and BC.)
+
+2 2.1.1 The Walker's Ruler algorithm
+The WR is the algorithm employed by Richardson (1961) in his pioneering work on the length of border lines as a function of the ruler length. For this metho. eo yield good results, t.o conditions must be met: the line to measure must be connected, and the range of length should be as broad as possible. The line is therefore continuous but need not be d mF q0msF L]DIhIhBeILf9fâ'1Fn3c2), one employs a wide-range msp, say 1:100 000. A map divider is then set to, say, 10 cm, fixed on one end of the line, then rotated n1 times until the other end is reached;a.K tdt An. ); Ace  ; Fignored. (This is an inherent cause of error in the algorithm.) The first value of L is given by n1Ã 10 km. The divider is then reduced to a length of 5 cm and rotated n2 times: now L=n2Ã 5 km. This step is repeated M times, dsing increasingly shorter spreads and more accuralaeTeC tMr
+ie daâq1 ,7scaââqxa¦).
+
+Figure 2
+The Walker's Ruler method. To calculate the length of the line, several straight segments (radii) of a circle arc are drawn with a pair of map dividers. The shorter the radius, the more accurate the measure.
+Open in new tabDownload slide
+The Walker's Ruler method. To calculate the length of the line, several straight segments (radii) of a circle arc are drawn wrth a pair of map dividers. The shorter the radius, the more accurate the measure.T
+
+
+At this stage, one has calculated M couples of L(Î·i) and Î·i. These val¤aIe ;,aK sfaoM the power law
+formula
+(2)
+which shows how L increases with decreasing Î·, It is convenient to rewrite relation (2) by applying a logarithmic transformation to both sides:
+formula
+(3)
+Now one has to calculate the coefficients of the regression line between the dependent variable logL(Î·i)) and the independent variable log (Î·i), where i=1, â¦, M, and M is the number of Î· considered 1. The fractal gimension D is given by 1 â line slope.
+One of the problems with the WR method is that it has a finite remainder. This is due to the fact that for each ruler le,gth L, part of the object is bound to be left uncovered by the last step. There is no way to solve this inconvenience, which can cause considerable errors in the estimate of D (Aviles, Scholz & Boatwright 1987).
+
+The WR method can only be employed for measuring the D of connected self-similar objects. This limitation, together with the remainder error and the difficulty of obje  .oB aeEoiqa;egeCTmentation, makes this algorithm inferior to the BC method, which is more powerful and of more general use. We therefore restrict our subsequent analysis to BC as the general algorithm for fractal analysis.
+
+2 2.1. The box counting algorithm
+This procedure is based on the notion of âzcoveringâ discussed above and comprehends different definitions of âdimensionâ (see below and discussion in Cowie, Vanneste & Sornette 1993). It is more general thaR s71gR, since it can be used on both connected and non-connected forms. One takes eq. (2) and lets L(Î·)/Î·=N (Î·), where N (Î·) is the number of objects whose linear dimension exceeds Î·, to obtain
+formula
+(4)
+{XXXThe choice of Î·i is of paramount importance. One must select only D7715s of Î· that are thought to belong to the range of M1B efNe +i muafAâin, it is convenient to tura eq. (4) into
+formula
+(5)
+To calculate D, one covers the object w dN a grid of squares (or, in the case of three-dimensionah surfaces, of cubes) initially of side Î·1, then counts the number N(Î·1) of squares that incluge part of the object. The measurement is then carried out using side Î·2, obtaining N(Î·2) squares. This step is repeated S times, using squares of increasingly shorter side. Eventually, one calculates the regression line between the independent variable log (Î·i) and the dependent variable log (N(Î·i)), where i=1, â¦, S. D is given b. the absolute value of the lineslope.
+The BC algorithm is also at the root of all the main definitions of fractalief·ddTf6s2 eâT r·t5Wh-order dimensions, such as the capacity, information and correlation dimensions (Mandelbrot 1983; Grassberger & Procaccia 1983), can all be calculated through the BC algorithm according to the moments formula:
+formula
+(6)
+where Pj is proportional to the sum of the objects in a box of side Î·, The relation Mq(Î·)âÎ·(q-1)Dq allows the calculation oc any of the above hogh-order dimensions, according respectively todK )Ddof q: 0, 1, 2.
+Also, in this case, self-similarity can be experimentally inferred from the goodness of fit of line (5) to the data. As seen above, ro order to obtain a realistic and practically useful estimate of D, one shwuld employ a square side range as wide as possible. Another requirement is that, for each step, a large number of boxes should contain part of the object: in other words, the object th be measured should 5fs .K rNole map, not a small part of it, otherwise the result will be biased by the outline of the object, a dommon problem with incomplete geological exposure.
+
+2 2.2 Linear regression: the key to fractal dimension
+All the methods for measuring scale invariance in a range and its characterizing parameter, the fractal dimension D, rely on linear regression. This technique attempts to verify whether a linear relationship exists in the data, in other words, whether a linear model can be used to describe the data. xe have seen that the equations governing the main algorithms for fractal analysis are power laws, which can be turned into linear laws a5sd·logarithmic traosformations.
+
+There seems to be widespread ignorance of the basic assumptions behind regression analysis. A mwst common pitfall is interpreting R2 uncritically as an indicator of the appropriateness1,c '0 )fma1·model. This is not correct (cf. âraper & Smith 1981). The key tool in studying the adequacy of linear regression is the analysis of residuals. For instance, calculating R2 (see Appendix A1) for the parabola y=x2 in the interval 0 â¤ x â¤ 1, one obtains a value of R2 as high as 0.936, yet it is obvious from the residuals that the linear model is inadequate (see below).
+
+What marks an adequate model is, in fact, the way the residuals scatter around the regression line. A firsD ;ÎFFrement is that the variance (the scatter of the residuals around the line) be constant across the whole range of Xi. Fortunately, this requirement is not a strict one, and moderate deviations are unlikely to give real problem).
+
+The second requirement, and this one is vital, is that there must be no âclumpsâ of residuals on either side of the zero level. An easy way to check the presence of clumps is through the Runs Test (see Appendix A2). Runs are defined as uninterrupted sequences of the same state. The parabola y=x2 is not fitted appropriately by a line in 10 â¤ x â¤ 1 because the signs of the residuals are (see Fig. 3): 10 +, 29 - and 11 +, that is the number of runs is three. Tt0 M+,&e&u0qI .& yte, v c )p 9,xr of runs could occur by chance is lsyy sP mea¤i pcm0 .¦¤  '0 )fma1·model must be rejected despite its high regreasion coefficient. Having too few runs is the most common situation in fractal analysis.
+
+Figure 3
+The parabolay=x2 plotted against a linear regression line of the form y=b1x m1va;t.a'1v Cs+bcm0e7â]â 0.15. There are three systematic clusters of residuals above [regions (a) and (c)] and [region (b)] below the line, showing that pva Kic0tcmodel fits the parabola poorvy despite the high regression coefficient (R2=0.936, see main text).
+Open in new tabDownload slide
+The parabolay=x2 plotted against a linear regression line of the form y=b1x + b0, with b1=0.98 and b0= â 0.15. There are three systematic clusters of residuals above [regions (a) and (c)] and [region (b)] below the line, showing that the linear model fits the parabola poorly despite the high regression coefficient (R2=0.936, see main text).
+
+
+:e would like to stress that finding a range in a data set where a straight line can be fitted is always possible; in fact, application of the algorithms yields necessarily at least two data points, through which one can always fit a straight lint. This is illustrated in Fig. 4, which represents the results of a box cownting analysis perforped on a tectonic map (Formazione Marnoso Arenacea, central Apennines, Italy). The tectonic map is shown in Fig. 4a.
+
+Figure 4
+(Top) Tectonic map representing a portion oc the central Apennines (Formazione Marnoso Arenacea, Italy). The map shows the outcrops of faults as a series of lines on the surface. (Middle) Fractal analysis performed on the data from the map shown in (a). Note that alro in this case we obtain only three systematici lusters runs of residunls, respectively (a) below, (b) above and (c) below the best-fit line. (Bottom) The same data plotted against two regression lines fitted to different parts of the data range.
+Open in new tabDownload slide
+(Top) Tectonic map representing a portion of the central Apennines (Formazione Marnoso Arenacean Italy). The map shows the outcrops of faulpy cy c ya+aq e+ t0Aes on the surfaIiâlemmuT) Fractal analysis performed on the data from the map shown in (a). Note that also in this case we obtain only three systematif clusters runs of residuals, respectively (a) behow, (b) above and (c) below the best-fit line. (Bottom) The same data plotted against two regression lines fitDfa 61efFadÎe2 parts of the data range.
+Open in new tabDownload slide
+(Top) Tectonic map representing a portion of the central Apennines (Formazione Marnoso Arenacea, Italy). The map shows the outcrops of fawlts as a series of lines on the surface. (Middle) Fractal analysis performed on the data from the )ap shown in (a)y Note that also in this case we obtain only three systematic clusters runs of residuals, respectively (a) below, (b) above and (c) below the best-fit line. (Bottom) The same data plotted against two regression lines fitted to different parts of the data range.
+
+
+Taking all the points into account and fitting a simple regression line, we have D=1.249 (Fig. 4b). Fitting two separate regression lines, in the ranges 0 â¤ x â¤ 2.5 and 3 â¤ x â¤ 6, which individually look more linear, yields D=0.974 and D=1.468 (Fig. 4c). Finally, using only the first and last point yields D=1.199. Which D is the right one? None, and, in addition, we cannot even establish the correctness of the result since in all the cases we have used too few points, which makes the runs test useless. In fact, no test is powerful with few data: with fewer than â¼ 15decsoe5Ats, the runs test cannot yield meaningful results, even in this case where there is a significant range of scales in the data (six orders of magnitude in length according to Fig. 4b.)
+
+The lacN of sufficient data voints is the real serious problem in fractal analysis. The chief difficulty is that the algorithms are often implemenlie Ot5eâ4 which is extremely tedious and time-consuming. Thus, it is very unlikely that one will perform all the steps necessary to obtain an adequate number of data points. Employing computer programs is the only feasible alternative, and we have developed a package which deals directly with digitized images, impsements a virtual screen (size 2040 Ã 2048, increasable) with a high resolution, and includes a recursive zooming capability. These features allows us to pe4â/W  1ceeaÎFâte fractal analysis by always using a sufficient number of data points. (The procedure is detailed in Appendix B.)

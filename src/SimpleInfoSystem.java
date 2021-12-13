@@ -11,7 +11,8 @@ public class SimpleInfoSystem {
         p = scan.nextDouble();
 
         String inFileName  = "input.txt";
-        String outFileName = "output.txt";
+        String haffmanFile = "haffman.txt";
+        String douHaffmanFile = "doubleHaffman.txt";
 
         String data = "";
 
@@ -33,14 +34,12 @@ public class SimpleInfoSystem {
 
         /** Coding and transmitting data, doing analysis **/
         TransmittingCanal canal = new TransmittingCanal(p);
-        canal.receive(coder.code(), coder.getDouCodesTree(), coder.codedLenCount());
+        canal.receive(coder.code());
         coder.analysis();
 
         /** Receiving and decoding data **/
         Decoder decoder = new Decoder();
         decoder.receive(canal.transmit());
-        decoder.receiveCodes(canal.transmitCodes());
-        decoder.receiveCodedLength(canal.transmitCodedLength());
         decoder.decode();
 
         /** Receiving decoded data **/
@@ -48,9 +47,17 @@ public class SimpleInfoSystem {
         receiver.receive(decoder.send());
 
         /** Saving data in output file **/
-        String result = receiver.getData();
-        try (FileOutputStream fout = new FileOutputStream(outFileName)) {
-            byte[] buffer = result.getBytes();
+        OutText result = receiver.getData();
+
+        try (FileOutputStream fout = new FileOutputStream(haffmanFile)) {
+            byte[] buffer = result.haffman.getBytes();
+            fout.write(buffer);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try (FileOutputStream fout = new FileOutputStream(douHaffmanFile)) {
+            byte[] buffer = result.douHaffman.getBytes();
             fout.write(buffer);
         } catch (IOException e) {
             System.out.println(e.getMessage());

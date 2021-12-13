@@ -1,11 +1,11 @@
 public class Receiver {
-    private String data;
+    private OutText data;
 
-    public void receive(String data) {
+    public void receive(OutText data) {
         this.data = data;
     }
 
-    public String getData() {
+    public OutText getData() {
         return data;
     }
 }
