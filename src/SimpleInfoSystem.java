@@ -33,7 +33,7 @@ public class SimpleInfoSystem {
 
         /** Coding and transmitting data, doing analysis **/
         TransmittingCanal canal = new TransmittingCanal(p);
-        canal.receive(coder.code(), coder.getCodesTree(), coder.codedLenCount());
+        canal.receive(coder.code(), coder.getDouCodesTree(), coder.codedLenCount());
         coder.analysis();
 
         /** Receiving and decoding data **/

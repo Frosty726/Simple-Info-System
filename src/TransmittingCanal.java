@@ -3,30 +3,33 @@ import java.util.Random;
 public class TransmittingCanal {
     private char[] data;
     private HafTree codesTree;
+    private DoubleHafTree doubleCodesTree;
     private int codedLength;
 
     /** Chance of noise to appear **/
     private double p;
 
     public TransmittingCanal() {
-        data        = null;
-        codesTree   = null;
-        codedLength = 0;
-        p           = 0;
+        data            = null;
+        codesTree       = null;
+        doubleCodesTree = null;
+        codedLength     = 0;
+        p               = 0;
     }
 
     public TransmittingCanal(double p) {
-        data        = null;
-        codesTree   = null;
-        codedLength = 0;
+        data            = null;
+        codesTree       = null;
+        doubleCodesTree = null;
+        codedLength     = 0;
 
         this.p = p;
     }
 
-    public void receive(char[] data, HafTree codesTree, int codedLength) {
-        this.data        = data;
-        this.codesTree   = codesTree;
-        this.codedLength = codedLength;
+    public void receive(char[] data, DoubleHafTree codesTree, int codedLength) {
+        this.data               = data;
+        this.doubleCodesTree    = codesTree;
+        this.codedLength        = codedLength;
     }
 
     /** Noise creation **/
@@ -43,8 +46,8 @@ public class TransmittingCanal {
         return data;
     }
 
-    public HafTree transmitCodes() {
-        return codesTree;
+    public DoubleHafTree transmitCodes() {
+        return doubleCodesTree;
     }
 
     public int transmitCodedLength() {

@@ -56,10 +56,12 @@ public class HafTree {
     }
 }
 
-
-class Pair {
-    public char ch;
+abstract class PrePair {
     public int num;
+}
+
+class Pair extends PrePair{
+    public char ch;
 
     Pair(char ch, int num) {
         this.ch  = ch;

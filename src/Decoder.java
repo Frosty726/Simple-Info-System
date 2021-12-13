@@ -1,5 +1,5 @@
 public class Decoder {
-    private HafTree codesTree;
+    private DoubleHafTree codesTree;
     private char[] input;
     private String output;
     private int codedLength;
@@ -15,7 +15,7 @@ public class Decoder {
         this.input = data;
     }
 
-    public void receiveCodes(HafTree codesTree) {
+    public void receiveCodes(DoubleHafTree codesTree) {
         this.codesTree = codesTree;
     }
 
@@ -25,13 +25,14 @@ public class Decoder {
 
     public void decode() {
 
-        HafTree.Node node = codesTree.getRoot();
+        DoubleHafTree.Node node = codesTree.getRoot();
         int index = 0;
         int timer = 16;
 
         while (codedLength >= 0) {
-            if (node.character != '\0') {
-                output += node.character;
+            if (node.characters != null) {
+                output += node.characters.get(0);
+                output += node.characters.get(1);
                 node = codesTree.getRoot();
             }
             if ((input[index] & (char)32768) != 0)
