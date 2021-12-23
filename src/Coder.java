@@ -29,6 +29,7 @@ public class Coder {
 
     public void receive(String input) {
         this.input = input.toCharArray();
+        DataToTrans.textLength = this.input.length;
     }
 
     /** Count number of characters **/
@@ -377,6 +378,7 @@ public class Coder {
         System.out.println("Total '1': " + onesCount);
         System.out.println("Total '0': " + (codedLength - onesCount));
         System.out.println("Average code length: " + ((double)codedLength / input.length));
+        System.out.println();
 
         onesCount = 0;
         codedLength = douCodedLenCount();
@@ -387,12 +389,12 @@ public class Coder {
             }
         }
 
-        System.out.println();
         System.out.println("Haffman Algorithm for double character blocks");
         System.out.println("Total characters: " + codedLength);
         System.out.println("Total '1': " + onesCount);
         System.out.println("Total '0': " + (codedLength - onesCount));
         System.out.println("Average code length: " + ((double)codedLength / input.length));
+        System.out.println();
 
         onesCount = 0;
         codedLength = eqLenCount();
@@ -403,12 +405,12 @@ public class Coder {
             }
         }
 
-        System.out.println();
         System.out.println("Uniform code");
         System.out.println("Total characters: " + codedLength);
         System.out.println("Total '1': " + onesCount);
         System.out.println("Total '0': " + (codedLength - onesCount));
         System.out.println("Average code length: " + ((double)codedLength / input.length));
+        System.out.println();
     }
 
     /** Function for convenient binary data printing **/
@@ -419,6 +421,15 @@ public class Coder {
                 ch <<= 1;
             }
             System.out.print(' ');
+        }
+
+        System.out.println();
+    }
+
+    static public void debugPrint(char ch) {
+        for (int i = 0; i < 16; ++i) {
+            System.out.print((ch & (char)32768) >>> 15);
+            ch <<= 1;
         }
 
         System.out.println();
@@ -437,6 +448,9 @@ class DataToTrans {
     public HafTree codesTree;
     public DoubleHafTree douHafTree;
     public EqTree uniTree;
+
+    /** Data for analysis **/
+    public static int textLength;
 
     public DataToTrans(char[] haffman, char[] douHaffman, char[] uniformCode,
                        int hafCount, int douHafCount, int uniCount,

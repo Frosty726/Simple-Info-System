@@ -33,14 +33,25 @@ public class SimpleInfoSystem {
         /** Initializing coder device **/
         coder.receive(source.send());
 
+        /** Binary additional coding **/
+        AntiJamCoder ajCoder = new AntiJamCoder();
+        ajCoder.receive(coder.code());
+        coder.analysis();
+        ajCoder.code();
+
         /** Coding and transmitting data, doing analysis **/
         TransmittingCanal canal = new TransmittingCanal(p);
-        canal.receive(coder.code());
-        coder.analysis();
+        canal.receive(ajCoder.send());
+
+        /** Binary additional decoding **/
+        AntiJamDecoder ajDecoder = new AntiJamDecoder();
+        ajDecoder.receive(canal.transmit());
+        ajDecoder.decode();
+        ajDecoder.analysis(ajCoder.getData());
 
         /** Receiving and decoding data **/
         Decoder decoder = new Decoder();
-        decoder.receive(canal.transmit());
+        decoder.receive(ajDecoder.send());
         decoder.decode();
 
         /** Receiving decoded data **/
